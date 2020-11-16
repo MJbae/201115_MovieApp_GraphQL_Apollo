@@ -1,34 +1,44 @@
-const People = [
+const Movies = [
   {
     id: 0,
     name: "MJ",
-    age: 10,
-    gender: "male",
+    score: 8,
   },
   {
     id: 1,
     name: "M",
-    age: 10,
-    gender: "male",
+    score: 5,
   },
   {
     id: 2,
     name: "J",
-    age: 10,
-    gender: "male",
+    score: 9,
   },
   {
     id: 3,
     name: "MJ",
-    age: 110,
-    gender: "female",
+    score: 3,
   },
   {
     id: 4,
     name: "MaaJ",
-    age: 1220,
-    gender: "female",
+    score: 2,
   },
 ];
 
-export { People };
+const getById = (id) => {
+  const filteredMovie = Movies.filter((movie) => movie.id === id);
+  return filteredMovie[0];
+};
+
+const deleteMovie = (id) => {
+  const leftMovies = Movies.filter((movie) => movie.id !== id);
+  if (leftMovies.length < Movies.length) {
+    Movies = leftMovies;
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { Movies, getById, deleteMovie };

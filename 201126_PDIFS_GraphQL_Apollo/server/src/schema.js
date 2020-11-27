@@ -31,11 +31,24 @@ const typeDefs = gql`
     SMALL
     LARGE
   }
+  type Movie {
+    id: Int!
+    title: String!
+    rating: Float
+    language: String
+    genres: [String]
+    description_intro: String
+    medium_cover_image: String
+    small_cover_image: String
+  }
 
   type Query {
     launches: [Launch]!
     launch(id: ID!): Launch
     me: User
+    someMovies(limit: Int!, minRating: Int!): [Movie]!
+    movies: [Movie]!
+    movie(id: Int!): Movie!
   }
   type Mutation {
     bookTrips(launchIds: [ID]!): TripUpdateResponse!
